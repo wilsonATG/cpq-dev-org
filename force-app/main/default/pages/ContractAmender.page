@@ -1,0 +1,79 @@
+<apex:page controller="ContractAmenderController" showHeader="true" sidebar="true" lightningStylesheets="true"
+    docType="html-5.0">
+    <apex:includeScript value="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" />
+
+    <style>
+        tr.border_bottom td {
+            border-bottom: 1px solid black;
+        }
+    </style>
+    
+    <script>
+        var j$ = jQuery.noConflict();
+        var firstLoad = true;
+
+        window.onload = function onload() {
+            console.log('onload()');
+            if (firstLoad) {
+                callContractAmendmentJavascript();
+                firstLoad = false;
+            }
+        }
+        function oncomplete() {
+            /*var qid = "{!JSENCODE($CurrentPage.parameters.qid)}";
+            var url = "/apex/sbqq__sb?scontrolCaching=1&id=" + qid + "#quote/le?qId=" + qid;
+            //var url = "/apex/sbqq__sb?id=" + qid + "#quote/le?qId=" + qid;
+            //var url = "/apex/sbqq__sb?id=" + qid;
+            //window.location.href = url;*/
+            console.log('ATG: completed');
+        }
+
+        function refreshContractAmendmentJavascript() {
+            j$msg = j$('#pageMessages');
+            j$msg.hide();
+
+            j$btn = j$('#pageButtons');
+            j$btn.hide();
+        }
+
+    </script>
+    <apex:form id="form">
+
+        <apex:actionFunction name="callContractAmendmentJavascript" action="{!callContractAmendment}" reRender="errors-and-buttons"
+            status="actStatusId" >
+        </apex:actionFunction>
+        <!-- oncomplete="oncomplete();" -->
+
+        <apex:panelGroup id="statusMsg">
+            <div style="font-size: 30px;position: fixed;top: 50%;left: 30%;">
+                <apex:actionStatus id="actStatusId">
+                    <apex:facet name="start">
+                        <img src="/img/loading.gif" />&nbsp; Making Cancel &amp; Replace... wait
+                    </apex:facet>
+                </apex:actionStatus>
+            </div>
+        </apex:panelGroup>
+
+        <apex:pageBlock id="errors-and-buttons" title="Results">
+            <div id="pageMessages" style="display:block">
+                <apex:pageMessages rendered="{!finished}" />
+
+                <apex:pageBlockButtons location="bottom">
+                    <div id="pageButtons" style="display:block">
+                        <apex:commandButton action="{!backToContract}" value="Back To Contract" id="backToContractBtn">
+                        </apex:commandButton>
+
+                        <apex:commandButton styleClass="slds-button slds-button_text-destructive" value="Go To Quote Line Editor" id="backToQLEBtn"
+                            action="{!redirectToQuoteLineEditor}" rendered="{!(quoteId != null)}">
+                        </apex:commandButton>
+
+                        <apex:commandButton action="{!refreshContractAmendment}" value="Try Again" onclick="refreshContractAmendmentJavascript()"
+                            id="tryAgainBtn" reRender="errors-and-buttons" status="actStatusId" rendered="{!(finished && quoteId == null)}">
+                        </apex:commandButton>
+                    </div>
+                </apex:pageBlockButtons>
+
+            </div>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>
