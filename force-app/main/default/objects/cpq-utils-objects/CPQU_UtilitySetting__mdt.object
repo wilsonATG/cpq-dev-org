@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Settings for the CPQ and related packages for example CPQXL. Settings for trigger bypasses and testing utils. Processing large orders, contracts, quote approvals, and quote cloning.</description>
+    <fields>
+        <fullName>BooleanValue__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Simple value for true/false statements. Custom code should use this instead of the value field when dealing with true/false values.</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <inlineHelpText>Simple value for true/false statements. Custom code should use this instead of the value field when dealing with true/false values.</inlineHelpText>
+        <label>Boolean Value</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Description__c</fullName>
+        <description>Description of the flag and what it does.</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <inlineHelpText>Description of the flag and what it does.</inlineHelpText>
+        <label>Description</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>IsActive__c</fullName>
+        <defaultValue>true</defaultValue>
+        <description>Is this setting currently on or off? If this is true, then the setting is considered in the custom code. If it is false, it&apos;s as if the record doesn&apos;t exist.</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <inlineHelpText>Is this setting currently on or off? If this is true, then the setting is considered in the custom code. If it is false, it&apos;s as if the record doesn&apos;t exist.</inlineHelpText>
+        <label>IsActive</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>NumberValue__c</fullName>
+        <description>If the value for the key value is a number, enter it here.</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <inlineHelpText>If the value for the key value is a number, enter it here.</inlineHelpText>
+        <label>Number Value</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>TextValue__c</fullName>
+        <description>Value for the setting.</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <inlineHelpText>Value for the setting.</inlineHelpText>
+        <label>Text Value</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>ValueType__c</fullName>
+        <defaultValue>&apos;Text&apos;</defaultValue>
+        <description>The type of the value.</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <inlineHelpText>The type of the value.</inlineHelpText>
+        <label>Value Type</label>
+        <required>true</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Text</fullName>
+                    <default>true</default>
+                    <label>Text</label>
+                </value>
+                <value>
+                    <fullName>Boolean</fullName>
+                    <default>false</default>
+                    <label>Boolean</label>
+                </value>
+                <value>
+                    <fullName>Number</fullName>
+                    <default>false</default>
+                    <label>Number</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <label>CPQ Utility Setting</label>
+    <pluralLabel>CPQ Utility Setting</pluralLabel>
+    <validationRules>
+        <fullName>Boolean_Selected</fullName>
+        <active>true</active>
+        <description>If a boolean value is selected, other values are blank.</description>
+        <errorConditionFormula>AND(ISPICKVAL(ValueType__c, &apos;Boolean&apos;),
+					OR(NOT(ISBLANK(TextValue__c)), NOT(ISNULL(NumberValue__c))))</errorConditionFormula>
+        <errorMessage>For Boolean types you may not have values in Number Value or Text Value</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Number_Selected</fullName>
+        <active>true</active>
+        <description>If a number value is selected, other values are blank.</description>
+        <errorConditionFormula>AND(ISPICKVAL(ValueType__c, &apos;Number&apos;),
+					OR(BooleanValue__c, NOT(ISBLANK(TextValue__c))))</errorConditionFormula>
+        <errorMessage>For Number types you may not have values in Boolean Value or Text Value</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Text_Selected</fullName>
+        <active>true</active>
+        <description>If text is selected the two other fields are not selected.</description>
+        <errorConditionFormula>AND(ISPICKVAL(ValueType__c, &apos;Text&apos;),
+					OR(BooleanValue__c, NOT(ISNULL(NumberValue__c))))</errorConditionFormula>
+        <errorMessage>For Text types you may not have values in Number Value or Boolean Value</errorMessage>
+    </validationRules>
+    <visibility>Public</visibility>
+</CustomObject>

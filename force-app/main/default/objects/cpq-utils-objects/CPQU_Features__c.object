@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>Hierarchy</customSettingsType>
+    <description>Contains the ability to disable features in CPQU or in it&apos;s dependencies if the values are defined.</description>
+    <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>AllTriggerHandlersDisabled__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Disables all trigger handlers where the handler extends CPQU_TriggerHandler.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Disables all trigger handlers where the handler extends CPQU_TriggerHandler.</inlineHelpText>
+        <label>All TriggerHandlers Disabled</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>CPQU_ErrorLogEventTriggerHandler__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Disable Trigger Handler for the ErrorLogEvent</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Disable Trigger Handler for the ErrorLogEvent</inlineHelpText>
+        <label>CPQU_ErrorLogEventTriggerHandler</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <label>CPQ Utility Features</label>
+    <visibility>Public</visibility>
+</CustomObject>
