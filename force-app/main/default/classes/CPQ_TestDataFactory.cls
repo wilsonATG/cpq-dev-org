@@ -3,6 +3,8 @@
 * @description  :  Utils class to create any types of data used in all test classes for the CPQ build
 * @author       :  Cory Bartholomew @ ATG and  Cesar Sandrigo @ ATG - Advanced Technology Group  
 * Modification Log
+**/
+
 @IsTest
 public with sharing class CPQ_TestDataFactory {
   public static Map<String, RecordType> recordTypeMap = new Map<String, RecordType>();
@@ -18,6 +20,7 @@ public with sharing class CPQ_TestDataFactory {
     update order;
   }
 
+  
   public static Account createAccount(Boolean doInsert) {
     Account account = new Account();
     account.Name = 'Test';
@@ -26,13 +29,13 @@ public with sharing class CPQ_TestDataFactory {
     account.BillingState = 'New York'; // 'testState';
     account.BillingStreet = '434 Broadway floor 2'; // 'testStreet';
     account.BillingCountry = 'United States';
-    account.BillingCountryCode = 'US';
+    /*account.BillingCountryCode = 'US';*/
     account.ShippingPostalCode = '10013'; // '00000';
     account.ShippingCity = 'New York'; // 'testCity';
     account.ShippingState = 'New York'; // 'testState';
     account.ShippingStreet = '434 Broadway floor 2'; // 'testStreet';
     account.ShippingCountry = 'United States';
-    account.ShippingCountryCode = 'US';
+    /*account.ShippingCountryCode = 'US';*/
     if (doInsert) {
       insert account;
     }
@@ -91,13 +94,14 @@ public with sharing class CPQ_TestDataFactory {
     return testContact;
   }
 
+  
   public static Opportunity createOppty(Account account, Boolean doInsert) {
     //Oppty
     Opportunity opportunity = new Opportunity();
     opportunity.Name = 'AA Test';
     opportunity.AccountId = account.Id;
     opportunity.CloseDate = Date.Today();
-    opportunity.CurrencyIsoCode = 'USD';
+    /*opportunity.CurrencyIsoCode = 'USD';*/
     opportunity.Pricebook2Id = Test.getStandardPricebookId();
     opportunity.Probability = 10;
     opportunity.TotalOpportunityQuantity = 0;
@@ -171,14 +175,14 @@ public with sharing class CPQ_TestDataFactory {
     product.SBQQ__SubscriptionTerm__c = 1;
     product.SBQQ__SubscriptionType__c = 'Renewable';
     //product.Product_External_ID__c = ApexUtils.randomString(30);
-
+    /*
     product.Infrastructure__c = 'Public Cloud';
     product.Revenue_Category__c = 'SERV';
     product.CPQ_Output_Name__c = 'TSDV';
     product.CPQ_Charge_Category__c = 'Managed Services';
     product.CPQ_Discount_Category__c = 'Managed Services';
     product.CPQ_Pricing_Source__c = 'SalesConnect';
-    product.CPQ_Pricing_Driver__c = 'Bundle';
+    product.CPQ_Pricing_Driver__c = 'Bundle';*/
 
     if (doInsert) {
       insert product;
@@ -226,7 +230,7 @@ public with sharing class CPQ_TestDataFactory {
     testPbEntry.Product2Id = product.Id;
     testPbEntry.UnitPrice = 10;
     testPbEntry.IsActive = true;
-    testPbEntry.CurrencyIsoCode = currencyCode;
+    /*testPbEntry.CurrencyIsoCode = currencyCode;*/
     //testPbEntry.SAP_Price_Entry__c = priceEntry == null ? null : priceEntry.Id;
     if (doInsert) {
       insert testPbEntry;
@@ -261,11 +265,11 @@ public with sharing class CPQ_TestDataFactory {
     quoteLine.SBQQ__SubscriptionBase__c = product.SBQQ__SubscriptionBase__c;
     quoteLine.SBQQ__SubscriptionPricing__c = product.SBQQ__SubscriptionPricing__c;
 
-    quoteLine.CPQ_Charge_Category__c = 'Managed Services';
+    /*quoteLine.CPQ_Charge_Category__c = 'Managed Services';
     quoteLine.CPQ_Discount_Category__c = 'Managed Services';
     quoteLine.CPQ_Pricing_Source__c = 'SalesConnect';
     quoteLine.CPQ_Pricing_Driver__c = 'Bundle';
-    quoteLine.CPQ_Output_Name__c = 'TSDV';
+    quoteLine.CPQ_Output_Name__c = 'TSDV';*/
     
     if (doInsert) {
       insert quoteLine;
@@ -281,7 +285,7 @@ public with sharing class CPQ_TestDataFactory {
     order.BillingPostalCode = '10013';
     order.BillingState = 'New York';
     order.BillingStreet = '434 Broadway floor 2';
-    order.CurrencyIsoCode = 'USD';
+    /*order.CurrencyIsoCode = 'USD';*/
     order.EffectiveDate = Date.today();
     order.EndDate = Date.today().addMonths(12);
     order.OpportunityId = opp.Id;

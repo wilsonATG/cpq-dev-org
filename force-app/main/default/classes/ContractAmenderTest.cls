@@ -147,7 +147,7 @@ public class ContractAmenderTest {
             AccountId, SBQQ__ActiveContract__c, SBQQ__AmendmentRenewalBehavior__c, 
             SBQQ__AmendmentOpportunityRecordTypeId__c, SBQQ__AmendmentOpportunityStage__c, 
             SBQQ__AmendmentOwner__c, SBQQ__AmendmentPricebookId__c, SBQQ__AmendmentStartDate__c, 
-            CurrencyIsoCode, EndDate, Name, ContractNumber, StartDate, ContractTerm, 
+            /*CurrencyIsoCode,*/ EndDate, Name, ContractNumber, StartDate, ContractTerm, 
             SBQQ__DisableAmendmentCoTerm__c, SBQQ__ExpirationDate__c, SBQQ__Opportunity__c, 
             SBQQ__OpportunityPricebookId__c, SBQQ__Order__c, 
             Pricebook2Id, SBQQ__Quote__c, Status
@@ -156,7 +156,7 @@ public class ContractAmenderTest {
 
         contract.SBQQ__PreserveBundleStructureUponRenewals__c = true;
         contract.SBQQ__AmendmentRenewalBehavior__c = 'Latest End Date';
-        contract.CurrencyIsoCode = 'USD';
+        /*contract.CurrencyIsoCode = 'USD';*/
         contract.SBQQ__DisableAmendmentCoTerm__c = false;
         contract.Status = 'Draft';
         
@@ -212,7 +212,7 @@ public class ContractAmenderTest {
             AccountId, SBQQ__ActiveContract__c, SBQQ__AmendmentRenewalBehavior__c, 
             SBQQ__AmendmentOpportunityRecordTypeId__c, SBQQ__AmendmentOpportunityStage__c, 
             SBQQ__AmendmentOwner__c, SBQQ__AmendmentPricebookId__c, SBQQ__AmendmentStartDate__c, 
-            CurrencyIsoCode, EndDate, Name, ContractNumber, StartDate, ContractTerm, 
+            /*CurrencyIsoCode,*/ EndDate, Name, ContractNumber, StartDate, ContractTerm, 
             SBQQ__DisableAmendmentCoTerm__c, SBQQ__ExpirationDate__c, SBQQ__Opportunity__c, 
             SBQQ__OpportunityPricebookId__c, SBQQ__Order__c, 
             Pricebook2Id, SBQQ__Quote__c, Status
@@ -221,7 +221,7 @@ public class ContractAmenderTest {
 
         contract.SBQQ__PreserveBundleStructureUponRenewals__c = true;
         contract.SBQQ__AmendmentRenewalBehavior__c = 'Latest End Date';
-        contract.CurrencyIsoCode = 'USD';
+        /*contract.CurrencyIsoCode = 'USD';*/
         contract.SBQQ__DisableAmendmentCoTerm__c = false;
         contract.Status = 'Draft';
         

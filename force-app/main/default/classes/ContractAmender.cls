@@ -151,7 +151,7 @@ public class ContractAmender {
         Map<Integer, SBQQ__QuoteLine__c> orderedQuoteLines = new Map<Integer, SBQQ__QuoteLine__c>();
 
         // Bulkify mode..
-        List<SBQQ__QuoteLine__c> replacedLinesToInsert = new List<SBQQ__QuoteLine__c>();
+        //List<SBQQ__QuoteLine__c> replacedLinesToInsert = new List<SBQQ__QuoteLine__c>();
         List<SBQQ__QuoteLine__c> canceledLinesToUpdate = new List<SBQQ__QuoteLine__c>();
         Map<Integer, List<CPQ_ApiDataModels.QuoteLineModel>> childsLinesToUpdateMap = new Map<Integer, List<CPQ_ApiDataModels.QuoteLineModel>>();
 
@@ -218,29 +218,29 @@ public class ContractAmender {
                 orderedQuoteLines.put(globalLineNumber, lineItem);
                 
                 // Custom field: SBQQ__QuoteLine__c.Replace_Quoteline__c
-				//		Populate Replace_Quoteline__c on all the Cancel Lines with a lookup to the Replace Line
+				// Populate Replace_Quoteline__c on all the Cancel Lines with a lookup to the Replace Line
                 SBQQ__QuoteLine__c originalLineItem = findLineItemModelInQuoteModel(quoteModel, qLine.Id)?.record;
                 
                 childsLinesToUpdateMap.put(idx++, childs);
 
-                replacedLinesToInsert.add(lineItem);
+                //replacedLinesToInsert.add(lineItem);
                 canceledLinesToUpdate.add(originalLineItem);
-        
-                SBQQ__Number__c + ']');
+				
+                System.debug('ATG: adding product ' + qLine.SBQQ__Product__c + ' [' + String.valueOf(qLine.SBQQ__Number__c) + '] in number[' + lineItem.SBQQ__Number__c + ']');
             }
         }
 
         // Reordering
-        if (replacedLinesToInsert.size() > 0) {
+        /*if (replacedLinesToInsert.size() > 0) {
             for (Integer i = 0; i < replacedLinesToInsert.size(); i++) {
                 SBQQ__QuoteLine__c replaced = replacedLinesToInsert[i];
                 CPQ_ApiDataModels.QuoteLineModel source = findLineItemModelInQuoteModel(quoteModel, replacedLinesToInsert[i].SBQQ__Source__c);
                 replaced.SBQQ__Number__c = source.record.SBQQ__Number__c + originalAmendedQuoteLines;
             }
-        }
+        }*/
 
         // Populates quoteLineWrapperMap for this option level 
-        List<QuoteLineWrapper> wrappers = quoteLineWrapperMap.get(optionLevel);
+        /*List<QuoteLineWrapper> wrappers = quoteLineWrapperMap.get(optionLevel);
         if (wrappers == null) {
             wrappers = new List<QuoteLineWrapper>();
         }
@@ -253,7 +253,7 @@ public class ContractAmender {
         for (Integer j : childsLinesToUpdateMap.keySet()) {
             List<CPQ_ApiDataModels.QuoteLineModel> childQuoteLines = childsLinesToUpdateMap.get(j);
             addProducts_FlatMode(quoteModel, childQuoteLines, originalAmendedQuoteLines, (Integer) replacedLinesToInsert[j].SBQQ__Number__c, optionLevel+1);
-        }
+        }*/
     }
 
     /**
