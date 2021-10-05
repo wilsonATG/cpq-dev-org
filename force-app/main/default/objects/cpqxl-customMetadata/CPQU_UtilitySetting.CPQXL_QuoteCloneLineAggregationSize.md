@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Quote Clone Line Aggregation Size</label>
+    <protected>false</protected>
+    <values>
+        <field>BooleanValue__c</field>
+        <value xsi:type="xsd:boolean">false</value>
+    </values>
+    <values>
+        <field>Description__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>IsActive__c</field>
+        <value xsi:type="xsd:boolean">true</value>
+    </values>
+    <values>
+        <field>NumberValue__c</field>
+        <value xsi:type="xsd:double">100.0</value>
+    </values>
+    <values>
+        <field>TextValue__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>ValueType__c</field>
+        <value xsi:type="xsd:string">Number</value>
+    </values>
+</CustomMetadata>

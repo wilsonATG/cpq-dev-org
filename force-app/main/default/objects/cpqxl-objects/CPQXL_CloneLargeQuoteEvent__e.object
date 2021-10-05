@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>Assists CPQXL&apos;s CloneXL feature to clone large quotes without hitting governor limit errors.</description>
+    <eventType>HighVolume</eventType>
+    <fields>
+        <fullName>CPQXL_AggregationNumberToProcess__c</fullName>
+        <description>Field to know which quote line/bundle aggregations have been processed while cloning a large quote.</description>
+        <externalId>false</externalId>
+        <isFilteringDisabled>false</isFilteringDisabled>
+        <isNameField>false</isNameField>
+        <isSortingDisabled>false</isSortingDisabled>
+        <label>Aggregation Number To Process</label>
+        <precision>5</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CPQXL_AllSubsetQuoteIds__c</fullName>
+        <description>Assists in splitting a large quote into smaller ones. This field is NOT used for CloneXL or ApprovalXL.</description>
+        <externalId>false</externalId>
+        <isFilteringDisabled>false</isFilteringDisabled>
+        <isNameField>false</isNameField>
+        <isSortingDisabled>false</isSortingDisabled>
+        <label>All Subset Quote Ids</label>
+        <length>120000</length>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>CPQXL_BundleAggregationsExtendedJSON__c</fullName>
+        <description>Map each aggregation number to ALL quote lines in that aggregation.</description>
+        <externalId>false</externalId>
+        <isFilteringDisabled>false</isFilteringDisabled>
+        <isNameField>false</isNameField>
+        <isSortingDisabled>false</isSortingDisabled>
+        <label>Bundle Aggregations Extended JSON</label>
+        <length>120000</length>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>CPQXL_BundleAggregationsJSON__c</fullName>
+        <description>Field to store the quote line bundle aggregations as a String.</description>
+        <externalId>false</externalId>
+        <isFilteringDisabled>false</isFilteringDisabled>
+        <isNameField>false</isNameField>
+        <isSortingDisabled>false</isSortingDisabled>
+        <label>Bundle Aggregations JSON</label>
+        <length>100000</length>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>CPQXL_BundlesToExcludeJSON__c</fullName>
+        <description>Store a JSON string of bundles to exclude from the clone. These would include bundles that the user chose to exclude, using the VF page.</description>
+        <externalId>false</externalId>
+        <isFilteringDisabled>false</isFilteringDisabled>
+        <isNameField>false</isNameField>
+        <isSortingDisabled>false</isSortingDisabled>
+        <label>Bundles To Exclude JSON</label>
+        <length>100000</length>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>CPQXL_OpportunityId__c</fullName>
+        <description>Store&apos;s the Opportunity Id for the quote (that is getting cloned).</description>
+        <externalId>false</externalId>
+        <isFilteringDisabled>false</isFilteringDisabled>
+        <isNameField>false</isNameField>
+        <isSortingDisabled>false</isSortingDisabled>
+        <label>Opportunity Id</label>
+        <length>18</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CPQXL_RemainingSubsetQuoteIds__c</fullName>
+        <description>This field allows for efficient large quote splitting into a series of smaller subset quotes. Populate this field when publishing the platform event, if you wish to split a large quote into several smaller quotes instead of clone it onto one quote.</description>
+        <externalId>false</externalId>
+        <isFilteringDisabled>false</isFilteringDisabled>
+        <isNameField>false</isNameField>
+        <isSortingDisabled>false</isSortingDisabled>
+        <label>Remaining Subset Quote Ids</label>
+        <length>100000</length>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>CPQXL_ScenarioType__c</fullName>
+        <description>This field tells the platform event what scenario we&apos;re dealing with (quote clone vs quote split).</description>
+        <externalId>false</externalId>
+        <isFilteringDisabled>false</isFilteringDisabled>
+        <isNameField>false</isNameField>
+        <isSortingDisabled>false</isSortingDisabled>
+        <label>Scenario Type</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CPQXL_SourceQuoteId__c</fullName>
+        <description>Store the quote id of the source quote that is being cloned.</description>
+        <externalId>false</externalId>
+        <isFilteringDisabled>false</isFilteringDisabled>
+        <isNameField>false</isNameField>
+        <isSortingDisabled>false</isSortingDisabled>
+        <label>Source Quote Id</label>
+        <length>18</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CPQXL_SourceQuoteNumberOfBundles__c</fullName>
+        <description>This field stores the number of bundles on the source quote.</description>
+        <externalId>false</externalId>
+        <isFilteringDisabled>false</isFilteringDisabled>
+        <isNameField>false</isNameField>
+        <isSortingDisabled>false</isSortingDisabled>
+        <label>Source Quote Number Of Bundles</label>
+        <precision>5</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CPQXL_TargetQuoteId__c</fullName>
+        <description>Store the id of the target quote (aka the clone) during a large quote cloning process.</description>
+        <externalId>false</externalId>
+        <isFilteringDisabled>false</isFilteringDisabled>
+        <isNameField>false</isNameField>
+        <isSortingDisabled>false</isSortingDisabled>
+        <label>Target Quote Id</label>
+        <length>18</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>Clone Large Quote Event</label>
+    <pluralLabel>Clone Large Quote Events</pluralLabel>
+    <publishBehavior>PublishImmediately</publishBehavior>
+</CustomObject>
